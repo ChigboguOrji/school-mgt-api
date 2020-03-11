@@ -4,31 +4,18 @@ const express = require("express");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const PORT = process.env.PORT || 5000;
+const config = require("./config")
 const server = express();
 server.disable("x-powered-by");
 
 // start database connection
-mongoose.connect("mongodb://localhost:27017/students", {
-  useCreateIndex: true,
-  useNewUrlParser: true,
-  useFindAndModify: true,
-  reconnectTries: Number.MAX_VALUE,
-  reconnectInterval: 300,
-  connectTimeoutMS: 30000,
-  keepAlive: true,
-  keepAliveInitialDelay: 30000,
-  useUnifiedTopology: true
+mongoose.connect(config.DB.URI,config.DB.OPTIONS).then(()=>{
+  console.log("---> Database connected")
+}).catch(err=>{
+  console.log("---> Database connection error");
+  process.exit(1);
 });
-const db = mongoose.connection;
-db.once(
-  "connected",
-  console.info.bind(console, "--------------> Database connected")
-);
-db.on("error", () => {
-  console.error.bind(console, "---------------->Database connection error");
-  process.exit();
-});
+
 // end database connection
 
 // Requiring routes module
@@ -37,9 +24,16 @@ const staffroutes = require("./staff/staff.route");
 const resultroutes = require("./score/score.route");
 
 // Enabling cors
+const whitelist = ["https://sch-portal.netlify.com","http://localhost:3000"]
 server.use(
   cors({
-    origin: "http://127.0.0.1:3000",
+    origin: function(origin,callback){
+      if(!origin) return callback(null,true)
+      if(whitelist.indexOf(origin)===-1){
+      return callback(new Error("Request rejected by cors policy"))
+    }
+  return callback(null,true)
+    },
     credentials: true,
     optionsSuccessStatus: 200
   })
@@ -77,5 +71,14 @@ server.use((err, req, res, next) => {
 
 http
   .createServer(server)
-  .listen(PORT, console.log("Server listening on port " + PORT));
+  .listen(config.PORT, console.log("Server listening on port " + config.PORT));
+
+  server.on("SIGTERM",function(){
+    console.log("Server Terminating")
+    server.close(function(){
+      console.log("Server Terminated")
+      process.exit(0)
+    })
+  })
+
 module.exports = server;
