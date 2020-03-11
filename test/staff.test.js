@@ -19,21 +19,21 @@ describe("STAFF", () => {
           firstname: "Orji",
           lastname: "Bright",
           username: "bright",
-          staffId: "00001",
+          userid: "00001",
           password: "12345"
         },
         {
           firstname: "Orji",
           lastname: "Bright",
           username: "Naza",
-          staffId: "00002",
+          userid: "00002",
           password: "12345"
         },
         {
           firstname: "Izukanne",
           lastname: "Patrick",
           username: "Spato",
-          staffId: "00003",
+          userid: "00003",
           password: "12345"
         }
       ];
@@ -44,24 +44,28 @@ describe("STAFF", () => {
     });
   });
 
-  describe("GET Login /staff/:id/:usrname/:pwd", () => {
+  describe("POST Login /", () => {
     it("#it returns the staff with the passed 'id', 'username' and 'password'", async () => {
       const teacher = new Staff({
         firstname: "Joe",
         lastname: "Iloanya",
         username: "Joe",
-        staffId: "00004",
+        userid: "00004",
         password: "12345"
       });
 
       await teacher.save();
+      const payload = {
+        username: teacher.username,
+        userid: teacher.userid,
+        password: teacher.password
+      };
       const res = await chai
         .request(server)
-        .get(
-          `/staff/${teacher.staffId}/${teacher.username}/${teacher.password}`
-        );
+        .post("/staff/login")
+        .send(payload);
       expect(res.status).to.equal(200);
-      expect(res.body).to.have.property("username", teacher.username);
+      expect(res.body).to.have.property("username", payload.username);
     });
   });
 
@@ -71,7 +75,7 @@ describe("STAFF", () => {
         firstname: "Joe",
         lastname: "Iloanya",
         username: "Joe",
-        staffId: "00005",
+        userid: "00005",
         password: "12345"
       });
 
@@ -93,7 +97,7 @@ describe("STAFF", () => {
         firstname: "",
         lastname: "Iloanya",
         username: "Joe",
-        staffId: "00006",
+        userid: "00006",
         password: "12345"
       });
 

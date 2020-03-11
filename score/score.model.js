@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const grades = "excellent credit distinction pass good fail".split(" ");
 
 const ScoreSchema = new Schema({
   student: { type: Schema.Types.Mixed, required: true },
@@ -17,7 +18,7 @@ const ScoreSchema = new Schema({
       grade: {
         type: String,
         lowercase: true,
-        enum: ["excellent", "credit", "distinction", "pass", "good", "fail"]
+        enum: grades
       }
     }
   ]

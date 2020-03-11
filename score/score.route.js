@@ -3,21 +3,15 @@ const router = express.Router();
 const controller = require("./score.controller");
 
 // get candidate result
-router.get(
-  "/result/:pin/:regno/:classId/:sessionId/:termId",
-  controller.getResultEntry
-);
+router.get("/result/:pin/:regno/:classId/:sessionId/:termId", controller.entry);
 
 // delete a result record
-router.get(
-  "/delete/:regno/:classId/:sessionId/:termId",
-  controller.deleteResultEntry
-);
+router.delete("/:regno/:classId/:sessionId/:termId", controller.deleteEntry);
 
 // update a result record
-router.post(
+router.patch(
   "/update/:regno/:classId/:sessionId/:termId",
-  controller.updateResultEntry
+  controller.updateEntry
 );
 
 module.exports = router;

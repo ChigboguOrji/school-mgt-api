@@ -1,14 +1,16 @@
 {
-    "PORT":5000,
-    "DB":{
-        "URI":"mongodb://localhost:27017/student",
-        "OPTIONS":{  "useCreateIndex": true,
-            "useNewUrlParser": true,
-            "useFindAndModify": true,
-            "reconnectInterval": 300,
-            "connectTimeoutMS": 30000,
-            "keepAlive": true,
-            "keepAliveInitialDelay": 30000,
-            "useUnifiedTopology": true}
+  "PORT": 5000,
+  "DB": {
+    "URI": "mongodb://localhost:27017/portalapp",
+    "OPTIONS": {
+      "useCreateIndex": true,
+      "useNewUrlParser": true,
+      "useFindAndModify": true,
+      "reconnectInterval": 300,
+      "connectTimeoutMS": 30000,
+      "keepAlive": true,
+      "keepAliveInitialDelay": 30000,
+      "useUnifiedTopology": true
     }
+  }
 }

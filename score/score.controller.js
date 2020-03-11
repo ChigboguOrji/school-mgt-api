@@ -9,7 +9,7 @@ const resultPin = [
 ];
 
 // GET result entry
-exports.getResultEntry = async (req, res) => {
+exports.entry = async (req, res) => {
   const { pin, regno, classId, sessionId, termId } = req.params;
   if (!pin || !regno || !classId || !sessionId || !termId) {
     return res.status(400).json({ message: "Invalid request parameter(s)" });
@@ -41,7 +41,7 @@ exports.getResultEntry = async (req, res) => {
 
 // DELETE result entry
 // :regno/:classId/:sessionId/:termId
-exports.deleteResultEntry = async (req, res) => {
+exports.deleteEntry = async (req, res) => {
   const { regno, classId, sessionId, termId } = req.params;
   await Score.deleteOne(
     {
@@ -61,7 +61,7 @@ exports.deleteResultEntry = async (req, res) => {
 };
 
 // POST update a result entry
-exports.updateResultEntry = async (req, res) => {
+exports.updateEntry = async (req, res) => {
   const { regno, classId, sessionId, termId } = req.params;
   // console.log(req.body, regno, classId, sessionId, termId);
   const record = await Score.findOne({
