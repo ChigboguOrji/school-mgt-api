@@ -2,30 +2,23 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const classEnum = 'js1 js2 js3 ss1 ss2 ss3'.split(' ')
 
-const StudentSchema = new Schema({
-  firstname:  {type: String, required: true, lowercase: true},
-  middlename: {type: String, lowercase: true},
-  lastname:   {type: String, required: true, lowercase: true},
-  promoted:   {type: Boolean, default: true},
-  approved:   {type: Boolean, default: true},
-  admitted:   {type: Boolean, default: true},
-  suspended:  {type: Boolean, default: false},
-  graduated:  {type: Boolean, default: false},
-  regno:      {type: String, required: true, minlength: 6, maxlength: 6},
-  classId:    {
-    admitted: {
-      type:      String,
-      enum:      classEnum,
-      lowercase: true,
-      required:  true
+const Student = new Schema({
+  _id:           {type: Schema.Types.ObjectId},
+  first_name:    {type: Schema.Types.String, required: true, lowercase: true},
+  middle_name:   {type: Schema.Types.String, lowercase: true},
+  last_name:     {type: Schema.Types.String, required: true, lowercase: true},
+  is_promoted:   {type: Schema.Types.Boolean, default: true},
+  is_admitted:   {type: Schema.Types.Boolean, default: true},
+  is_suspended:  {type: Schema.Types.Boolean, default: false},
+  has_graduated: {type: Schema.Types.Boolean, default: false},
+  reg_no:        {type: Schema.Types.String, required: true},
+  is_verified:   {type: Schema.Types.Boolean, default: false},
+  class_info:    {
+    admitted: {type: String, enum: classEnum, lowercase: true, required: true
     },
-    current: {
-      type:      String,
-      enum:      classEnum,
-      lowercase: true,
-      required:  true
+    current_class: {type: String, enum: classEnum, lowercase: true, required: true
     }
   }
 })
 
-module.exports = mongoose.model('Students', StudentSchema, 'students')
+module.exports = mongoose.model('Student', Student)
