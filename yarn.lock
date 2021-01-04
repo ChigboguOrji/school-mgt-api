@@ -2656,9 +2656,9 @@ supports-color@^5.3.0, supports-color@^5.5.0:
     has-flag "^3.0.0"
 
 systeminformation@^4.14.16:
-  version "4.21.2"
-  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-4.21.2.tgz#0ee92c0565687a5301ba141444643b43d0370ae2"
-  integrity sha512-7O6laxHTstfj9MSrX77lKLfWz0zqqutWL0+uoJkR7sOOr4XCTwD0QG4shUVCiOWlVX+a8/gHJUio420FrSk8/w==
+  version "4.33.8"
+  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-4.33.8.tgz#3e65677a07296a39bd0347116c4d56bc52ffda7b"
+  integrity sha512-2kTDsCO/NBQArncwJ3ZA0qQOMTCdqixcggVxlPJrtinfQ42f3x4BAmIwmzkOlAsYYVnT63vOYHlunC2dNyZzTA==
 
 term-size@^1.2.0:
   version "1.2.0"
