@@ -1,6 +1,12 @@
 const Student = require('../students/model')
 const Score = require('./model')
 
+class ScoresCtl {
+  async addScoreEntry() {
+
+  }
+}
+
 // pin codes
 const resultPin = [
   {code: 1234567890, available: true, useCount: 0},

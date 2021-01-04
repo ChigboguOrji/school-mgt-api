@@ -1,4 +1,4 @@
-const Staff = require('./staff.model')
+const Staff = require('./model')
 
 // getting staff listing
 exports.listAll = async (req, res) => {

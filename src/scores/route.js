@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const controller = require('./score.controller')
+const controller = require('./controller')
 
 // get candidate result
 router.get('/result/:pin/:regno/:classId/:sessionId/:termId', controller.entry)

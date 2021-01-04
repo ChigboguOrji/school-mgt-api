@@ -1,4 +1,4 @@
-const Student = require('./students.model')
+const Student = require('./model')
 
 // getting a student by regno
 exports.getStudents = async (req, res) => {
