@@ -4,9 +4,9 @@ const expect = chai.expect;
 const chaiHttp = require("chai-http");
 chai.use(chaiHttp);
 
-const Score = require("../score/score.model");
-const Student = require("../students/students.model");
-const server = require("../server");
+const Score = require("./model");
+const Student = require("../students/model");
+const server = require("../../server");
 
 const marks = [
   {

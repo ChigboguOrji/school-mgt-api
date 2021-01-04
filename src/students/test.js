@@ -4,8 +4,8 @@ const expect = chai.expect;
 const chaiHttp = require("chai-http");
 chai.use(chaiHttp);
 
-const server = require("../server");
-const Student = require("../students/students.model");
+const server = require("../../server");
+const Student = require("./model");
 
 describe("STUDENT", () => {
   beforeEach(async () => {

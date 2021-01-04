@@ -1,5 +1,5 @@
-const Student = require("../students/students.model");
-const Score = require("./score.model");
+const Student = require("../students/model");
+const Score = require("./model");
 
 // pin codes
 const resultPin = [
