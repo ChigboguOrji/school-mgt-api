@@ -13,15 +13,14 @@
   "scripts": {
     "start:prod": "nodemon ./index.js env=prod",
     "start:dev": "nodemon ./index.js env=dev",
-    "test": "mocha --timeout 10000 --exit",
+    "test": "jest",
     "lint": "eslint . --fix"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
     "eslint": "^7.17.0",
     "eslint-config-google": "^0.14.0",
-    "mocha": "^7.0.1",
-    "nodemon": "^2.0.6"
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.6",
+    "supertest": "^4.0.2"
   }
 }
