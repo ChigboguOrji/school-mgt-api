@@ -1,5 +1,5 @@
 /**
- *
+ *@return {object}
  * @param {*} status
  * @param {*} msg
  * @param {*} success
