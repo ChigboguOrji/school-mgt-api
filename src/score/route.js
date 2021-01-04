@@ -1,17 +1,17 @@
-const express = require("express");
-const router = express.Router();
-const controller = require("./score.controller");
+const express = require('express')
+const router = express.Router()
+const controller = require('./score.controller')
 
 // get candidate result
-router.get("/result/:pin/:regno/:classId/:sessionId/:termId", controller.entry);
+router.get('/result/:pin/:regno/:classId/:sessionId/:termId', controller.entry)
 
 // delete a result record
-router.delete("/:regno/:classId/:sessionId/:termId", controller.deleteEntry);
+router.delete('/:regno/:classId/:sessionId/:termId', controller.deleteEntry)
 
 // update a result record
 router.patch(
-  "/update/:regno/:classId/:sessionId/:termId",
+  '/update/:regno/:classId/:sessionId/:termId',
   controller.updateEntry
-);
+)
 
-module.exports = router;
+module.exports = router

@@ -17,12 +17,14 @@
   "scripts": {
     "start:prod": "nodemon ./server.js env=prod",
     "start:dev": "nodemon ./server.js env=dev",
-    "test": "mocha --timeout 10000 --exit"
+    "test": "mocha --timeout 10000 --exit",
+    "lint": "eslint . --fix"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "eslint": "^7.17.0",
+    "eslint-config-google": "^0.14.0",
     "mocha": "^7.0.1"
   }
 }
