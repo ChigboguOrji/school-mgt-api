@@ -13,12 +13,8 @@ const Student = new Schema({
   has_graduated: {type: Schema.Types.Boolean, default: false},
   reg_no:        {type: Schema.Types.String, required: true},
   is_verified:   {type: Schema.Types.Boolean, default: false},
-  class_info:    {
-    admitted: {type: String, enum: classEnum, lowercase: true, required: true
-    },
-    current_class: {type: String, enum: classEnum, lowercase: true, required: true
-    }
-  }
-})
+  admitted_to:   {type: String, enum: classEnum, lowercase: true, required: true},
+  current_class: {type: String, enum: classEnum, lowercase: true, required: true}
+}, {timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'}})
 
 module.exports = mongoose.model('Student', Student)

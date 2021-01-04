@@ -10,7 +10,7 @@ class StudentCtl {
     res.status(200).json(respondWith(200, 'student listing', true, null))
   }
 
-  async getStudent() {
+  async getStudent(req, res) {
     res.status(200).json(respondWith(200, 'student info', true, null))
   }
 }
