@@ -1,16 +1,14 @@
 const express = require('express')
 const router = express.Router()
-const controller = require('./controller')
+const ctler = require('./controller')
+const val = require('./validator')
 
-router.get('/', controller.listAll)
+router.get('/info/:staff_id', val.valGetStaff, ctler.getStaffInfo)
 
-router.get('/:userid/:username/:password', controller.staff)
+router.get('/', ctler.listAllStaff)
 
-router.post('/login', controller.login)
+router.post('/login', val.valLogin, ctler.login)
 
-router.post('/', controller.addToList)
+router.post('/member', val.valNewMember, ctler.addNewMember)
 
-// router.post("/ban-user")
-// router.delete("/user")
-// router.patch("/user")
 module.exports = router

@@ -1,17 +1,19 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const roles = 'superuser admin'.split(' ')
+const roles = 'member form_teacher principal admin'.split(' ')
+const gender = 'male female unspecified'.split(' ')
 
-const StaffSchema = new Schema({
-  firstname: {type: String, required: true, lowercase: true},
-  lastname:  {type: String, required: true, lowercase: true},
-  username:  {type: String, required: true, lowercase: true},
-  userid:    {type: Schema.Types.Mixed, required: true, unique: true},
-  password:  {type: Schema.Types.Mixed, required: true},
-  role:      {type: String, enum: roles, default: 'admin'},
-  approved:  {type: Boolean, default: true},
-  banned:    {type: Boolean, default: false},
-  created:   {type: Date, default: Date.now}
-})
+const Staff = new Schema({
+  _id:          {type: Schema.Types.ObjectId},
+  first_name:   {type: Schema.Types.String, required: true, lowercase: true},
+  middle_name:  {type: Schema.Types.String, lowercase: true},
+  last_name:    {type: Schema.Types.String, required: true, lowercase: true},
+  staff_id:     {type: Schema.Types.Mixed, required: true, unique: true},
+  email:        {type: Schema.Types.String, required: true},
+  password:     {type: Schema.Types.Mixed, required: true},
+  roles:        [{type: Schema.Types.Array, enum: roles, default: 'member'}],
+  is_suspended: {type: Schema.Types.Boolean, default: false},
+  gender:       {type: Schema.Types.String, enum: gender, default: 'unspecified'}
+}, {timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'}})
 
-module.exports = mongoose.model('Staff', StaffSchema, 'staff')
+module.exports = mongoose.model('Staff', Staff)
