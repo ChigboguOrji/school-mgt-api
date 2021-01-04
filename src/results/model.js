@@ -16,10 +16,10 @@ const Result = new Schema({
   class_id:   String,
   session_id: String,
   term_id:    String,
-  scores:     [{subject: String, r_test: Number, c_asses: Number, test: Number, 
-    exams: Number, total: Number}],
-  grade:      {type: String, lowercase: true, enum: grades},
-  average:    {type: Number, default: 0}
+  scores:     [{subject: String, r_test:  Number, c_asses: Number, test:    Number,
+    exams:   Number, total:   Number}],
+  grade:   {type: String, lowercase: true, enum: grades},
+  average: {type: Number, default: 0}
 })
 
 module.exports = mongoose.model('Result', Result)

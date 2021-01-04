@@ -26,7 +26,7 @@ module.exports = (app) => {
 
   app.use('/students', require('../students/route'))
   app.use('/staff', require('../staff/route'))
-  app.use('/scores', require('../scores/route'))
+  app.use('/results', require('../results/route'))
 
   return app
 }

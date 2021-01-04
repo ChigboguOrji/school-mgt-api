@@ -2,8 +2,8 @@
 const {body, param, validationResult} = require('express-validator')
 const CException = require('../middlewares/exception')
 
-class ScoreValidator {
-  async newScoreEntry(req, res, next) {
+class ResultValidator {
+  async newResultEntry(req, res, next) {
     await param('reg_no').exists().not().isEmpty().isString().run(req)
     await body('class_id').exists().not().isEmpty().isString().run(req)
     await body('session_id').exists().not().isEmpty().isString().run(req)
@@ -18,4 +18,4 @@ class ScoreValidator {
   }
 }
 
-module.exports = new ScoreValidator()
+module.exports = new ResultValidator()
